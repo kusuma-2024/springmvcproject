@@ -78,7 +78,7 @@ public class ProductController {
   
     // Update product
     
-    @GetMapping("editproduct/{id}")
+   @GetMapping("editproduct/{id}")
     public String editproduct(@PathVariable long id,Model model)
     {
     	ProductModel  productModel= productService.editproduct(id);
@@ -86,8 +86,9 @@ public class ProductController {
     	model.addAttribute("id",id);
     	return "editproduct";
     }
-  @PostMapping("/updateProduct/{id}")
-    public String updateProduct(@PathVariable long id, @ModelAttribute("products") ProductModel productModel) {
+    
+    @PostMapping("/updateProduct/{id}")
+    public String updateProduct(@PathVariable("id") long id, @ModelAttribute("products") ProductModel productModel) {
         productService.updateProduct(id, productModel);
         return "redirect:/getallproducts";
     }
