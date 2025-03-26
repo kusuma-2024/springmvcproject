@@ -52,25 +52,6 @@ public class ProductService {
     }
 
     // Update existing product
- /*   public void updateProduct(long id, ProductModel productModel) {
-        Optional<ProductEntity> productEntityOpt = productRepository.findById(id);
-           ProductEntity existingProduct = productEntityOpt.get();
-            existingProduct.setName(productModel.getName());
-            existingProduct.setPrice(productModel.getPrice());
-            existingProduct.setQuantity(productModel.getQuantity());
-            existingProduct.setBrand(productModel.getBrand());
-            existingProduct.setMadeIn(productModel.getMadeIn());
-            double totalAmount = productModel.getPrice() * productModel.getQuantity();
-            existingProduct.setTotalAmount(totalAmount);
-            double taxAmount = productModel.getPrice() * 18 / 100;
-            existingProduct.setTaxAmount(taxAmount);
-            existingProduct.setCretedAt(LocalDateTime.now());
-            existingProduct.setCreatedBy(System.getProperty("user.name"));
-
-            productRepository.save(existingProduct);
-        
-    }*/
-
 	public ProductModel editproduct(long id) {
       ProductEntity productEntity=productRepository.findById(id).get();
       ProductModel productModel=new ProductModel();
@@ -81,4 +62,20 @@ public class ProductService {
       productModel.setBrand(productEntity.getBrand());
       return productModel;
 	}
+	  public void updateProduct(long id, ProductModel productModel) {
+    Optional<ProductEntity> productEntityOpt = productRepository.findById(id);
+       ProductEntity Product = productEntityOpt.get();
+       Product.setName(productModel.getName());
+       Product.setPrice(productModel.getPrice());
+       Product.setQuantity(productModel.getQuantity());
+       Product.setBrand(productModel.getBrand());
+       Product.setMadeIn(productModel.getMadeIn());
+        double totalAmount = productModel.getPrice() * productModel.getQuantity();
+        Product.setTotalAmount(totalAmount);
+        double taxAmount = productModel.getPrice() * 18 / 100;
+        Product.setTaxAmount(taxAmount);
+        Product.setCretedAt(LocalDateTime.now());
+        Product.setCreatedBy(System.getProperty("user.name"));
+
+        productRepository.save(Product);
 }
