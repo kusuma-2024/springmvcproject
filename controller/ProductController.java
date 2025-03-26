@@ -78,20 +78,6 @@ public class ProductController {
   
     // Update product
     
- /*   @GetMapping("/editproduct/{id}" )
-	public String editproduct(@PathVariable long id,Model model )
-	{
-		Optional<ProductEntity> products= productService.getProductById(id);
-		model.addAttribute("products",products);
-		return "edit-product";
-	}
- 
-    @PostMapping("/updateProduct/{id}")
-    public String updateProduct(@PathVariable long id, @ModelAttribute("products") ProductModel productModel) {
-        productService.updateProduct(id, productModel);
-        return "redirect:/getallproducts";
-    }*/
-    
     @GetMapping("editproduct/{id}")
     public String editproduct(@PathVariable long id,Model model)
     {
@@ -100,5 +86,9 @@ public class ProductController {
     	model.addAttribute("id",id);
     	return "editproduct";
     }
-
+  @PostMapping("/updateProduct/{id}")
+    public String updateProduct(@PathVariable long id, @ModelAttribute("products") ProductModel productModel) {
+        productService.updateProduct(id, productModel);
+        return "redirect:/getallproducts";
+    }
 }
